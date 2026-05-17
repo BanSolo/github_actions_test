@@ -22,6 +22,14 @@ def count_vowels(string):
             count += 1
     return count
 
+def count_consonants(string):
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    count = 0
+    for char in string:
+        if char in consonants:
+            count += 1
+    return count
+
 
 # example_input = 'asd', 'qwe', 'example', 'test'
 print(concatenate_strings("asd", "qwe", "example", "test"))
