@@ -4,13 +4,17 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+
     steps:
     - name: Check out the repository
       uses: actions/checkout@v6
     - name: Set up Python
       uses: actions/setup-python@v6
       with:
-        python-version: '3.12'
+        python-version: ${{matrix.python-version}}
         cache: 'pip'
     - name: Install dependencies
       run: |
