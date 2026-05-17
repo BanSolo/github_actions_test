@@ -43,6 +43,14 @@ jobs:
       pages: write
       id-token: write
 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    concurrency:
+      group: pages
+      cancel-in-progress: true
+
     steps:
     - name: Download coverage report
       uses: actions/download-artifact@v7
@@ -54,4 +62,5 @@ jobs:
       with:
         path: public
     - name: Deploy to GitHub Pages
+      id: deployment
       uses: actions/deploy-pages@v5
