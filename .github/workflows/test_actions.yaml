@@ -28,3 +28,9 @@ jobs:
       run: |  
         coverage run -m unittest discover -s . -p "test_*.py"
         coverage report
+        coverage html
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v7
+      with:
+        name: coverage-report-${{ matrix.python-version }}
+        path: htmlcov/
