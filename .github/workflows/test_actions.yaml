@@ -64,3 +64,11 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v5
+
+  deploy-render:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Trigger Render Deployment
+      run: |
+        curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
