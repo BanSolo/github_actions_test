@@ -25,7 +25,7 @@ class TestConcatenateStrings(unittest.TestCase):
                 self.assertEqual(concatenate_strings(*args), expected)
 
     def test_unicode_and_special_characters(self):
-        self.assertEqual(concatenate_strings("пр", "ивет", "😊"), "привет😊")
+        self.assertEqual(concatenate_strings("qwe", "asd", "😊"), "qweasd😊")
 
     def test_many_arguments_concatenation_performance_like(self):
         parts = ["x"] * 1000

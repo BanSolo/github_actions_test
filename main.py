@@ -22,6 +22,7 @@ def count_vowels(string):
             count += 1
     return count
 
+
 def count_consonants(string):
     consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
     count = 0
