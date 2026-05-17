@@ -4,6 +4,7 @@ from main import concatenate_strings
 from main import get_string_length
 from main import reverse_string
 from main import count_vowels
+from main import count_consonants
 
 
 class TestConcatenateStrings(unittest.TestCase):
@@ -46,6 +47,10 @@ class TestConcatenateStrings(unittest.TestCase):
     def test_count_vowels(self):
         self.assertEqual(count_vowels("hello"), 2)
         self.assertEqual(count_vowels(""), 0)
+
+    def test_count_consonants(self):
+        self.assertEqual(count_consonants("hello"), 3)
+        self.assertEqual(count_consonants(""), 0)
 
 
 if __name__ == "__main__":
