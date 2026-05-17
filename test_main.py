@@ -47,5 +47,6 @@ class TestConcatenateStrings(unittest.TestCase):
         self.assertEqual(count_vowels("hello"), 2)
         self.assertEqual(count_vowels(""), 0)
 
+
 if __name__ == "__main__":
     unittest.main()
