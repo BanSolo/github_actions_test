@@ -6,7 +6,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ['3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12', '3.13']
 
     steps:
     - name: Check out the repository
@@ -72,3 +72,20 @@ jobs:
     - name: Trigger Render Deployment
       run: |
         curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+  deploy-gcp:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Executing remote ssh commands to deploy
+      uses: appleboy/ssh-action@v1.2.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd ~/github_actions_test
+          git pull
+          source .venv/bin/activate 
+          pip install -r requirements.txt
+          echo "A deploy sikeresen befejeződött a GCP szerveren!"
